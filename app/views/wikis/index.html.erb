@@ -1,0 +1,6 @@
+<h1>Blocipedia</h1>
+
+<% @wikis.each do |wiki| %>
+  <p><%= link_to wiki.title, wiki_path(wiki.id) %><p>
+<% end %>
+<%= link_to 'New Wiki', new_wiki_path %>
