@@ -21,6 +21,7 @@ gem 'figaro'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'pundit'
+gem 'faker', '~> 1.6', '>= 1.6.3'
 
 group :development, :test do
   gem 'byebug'
@@ -28,7 +29,7 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails'
   gem 'shoulda'
-  gem 'faker'
+  gem 'faker', '~> 1.6', '>= 1.6.3'
   gem 'factory_girl_rails'
   gem 'pry-rails'
 end
