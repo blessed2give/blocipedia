@@ -1,7 +1,6 @@
 
 50.times do
-
-  User.create! (
+  User.create(
     email: Faker::Internet.email,
     password: Faker::Lorem.word
   )
@@ -9,8 +8,7 @@ end
 users = User.all
 
 50.times do
-
-  Wiki.create! (
+  Wiki.create(
     user: users.sample,
     title: Faker::Space.star,
     body: Faker::Lorem.paragraphs,
