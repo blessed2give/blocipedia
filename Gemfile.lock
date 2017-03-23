@@ -208,7 +208,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   factory_girl_rails
-  faker
+  faker (~> 1.6, >= 1.6.3)
   figaro
   jquery-rails
   pg
