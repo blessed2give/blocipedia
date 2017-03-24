@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'wikis/index'
-
+  resources :charges, only: [:new, :create]
+  resources :users, only: [:show]
   resources :wikis
   get 'about', to: 'welcome#about'
   devise_for :users

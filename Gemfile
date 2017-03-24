@@ -22,6 +22,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'pundit'
 gem 'faker', '~> 1.6', '>= 1.6.3'
+gem 'stripe'
 
 group :development, :test do
   gem 'byebug'
