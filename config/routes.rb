@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :charges, only: [:new, :create]
+  resources :charges, only: [:new, :create, :destroy]
   resources :users, only: [:show]
   resources :wikis
   get 'about', to: 'welcome#about'

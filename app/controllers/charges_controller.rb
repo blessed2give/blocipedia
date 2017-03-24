@@ -20,11 +20,23 @@ class ChargesController < ApplicationController
       currency: 'usd'
     )
 
-    flash[:notice] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
-    redirect_to user_path(current_user) # or wherever
+    if charge.paid
+      current_user.premium!
+
+      flash[:notice] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
+      redirect_to user_path(current_user) # or wherever
+    end
 
     rescue Stripe::CardError => e
       flash[:alert] = e.message
       redirect_to new_charge_path
+  end
+
+  def destroy
+    current_user.standard!
+    current_user.wikis.each do |wiki|
+      wiki.update(private: false)
+    end
+    redirect_to root_path, notice: 'Successfully downgraded.'
   end
 end
