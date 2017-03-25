@@ -1,0 +1,8 @@
+<h1><%= current_user.email %></h1>
+
+
+<% if current_user.standard? %>
+  <%= link_to "Upgrade Account", new_charge_path %>
+<% else %>
+  <%= link_to "Downgrade Account", charge_path, method: :delete %>
+<% end %>

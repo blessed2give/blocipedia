@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  get 'wikis/index'
-
+  resources :charges, only: [:new, :create, :destroy]
   resources :wikis
   get 'about', to: 'welcome#about'
   devise_for :users
-
+  resources :users, only: [:show]
   authenticated :user do
     root 'wikis#index', as: :authenticated_root
   end
