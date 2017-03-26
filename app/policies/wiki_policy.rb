@@ -1,9 +1,9 @@
-class ApplicationPolicy
-  attr_reader :user, :record
+class WikiPolicy
+  attr_reader :user, :wiki
 
-  def initialize(user, record)
+  def initialize(user, wiki)
     @user = user
-    @record = record
+    @wiki = wiki
   end
 
   def index?
@@ -23,7 +23,8 @@ class ApplicationPolicy
   end
 
   def update?
-    user.present? && !wiki.private?
+    ( user.present? && !wiki.private? ) || ( user.present? && wiki.user_id == user.id )
+    #user.present? && wiki.user_id == user.id
   end
 
   def edit?
