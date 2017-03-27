@@ -13,8 +13,11 @@ class WikisController < ApplicationController
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
     @wiki.user = current_user
-    @wiki.private = params[:wiki][:private]
-
+    if current_user.standard?
+      @wiki.private = false
+    else
+      @wiki.private = params[:wiki][:private]
+    end
     if @wiki.save
       flash[:notice] = "Wiki was saved."
       redirect_to @wiki
@@ -37,8 +40,12 @@ class WikisController < ApplicationController
     authorize @wiki
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
-    @wiki.private = params[:wiki][:private]
-
+    if current_user.standard?
+      @wiki.private = false
+    else
+      @wiki.private = params[:wiki][:private]
+    end
+    
     if @wiki.save
       flash[:notice] = "Wiki was updated."
       redirect_to @wiki
