@@ -29,6 +29,7 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
+    @users = User.where.not(id: current_user.id)
   end
 
   def edit
@@ -45,7 +46,7 @@ class WikisController < ApplicationController
     else
       @wiki.private = params[:wiki][:private]
     end
-    
+
     if @wiki.save
       flash[:notice] = "Wiki was updated."
       redirect_to @wiki
