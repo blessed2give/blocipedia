@@ -1,4 +1,15 @@
-<h1><%= current_user.email %></h1>
+<h1>User Profile</h1>
+<p><%= current_user.email %></p>
+<p><%= current_user.role %></p>
+
+<div class="media">
+  <h4>Wikis</h4>
+  <div class="media-body">
+    <% @wikis.each do |w| %>
+      <p><%= link_to w.title, wiki_path(w) %></p>
+    <% end %>
+  </div>
+</div>
 
 
 <% if current_user.standard? %>
