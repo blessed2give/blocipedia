@@ -6,11 +6,12 @@ module ApplicationHelper
     }
 
     extensions = {
-      space_after_headers: true
-      #quote: true
+      space_after_headers: true,
+      quote: true
     }
+    
     renderer = Redcarpet::Render::HTML.new(options)
     markdown = Redcarpet::Markdown.new(renderer, extensions)
-    markdown.render(text)
+    markdown.render(text).html_safe
   end
 end
