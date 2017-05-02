@@ -26,4 +26,4 @@ blocmetrics.report = function(eventName) {
    request.send(JSON.stringify(event));
 };
 
-document.getElementById("new-wiki-btn").addEventListener("click", blocmetrics.report("click"));
+$('#new-wiki-btn').on("click", blocmetrics.report("click"));
